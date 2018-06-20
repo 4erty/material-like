@@ -2,6 +2,13 @@
   --base-color: rgb(98, 0, 238);
   --base-text-color: #fff;
   --transparent: rgba(0, 0, 0, 0);
+  --second-color: #018786;
+}
+
+body {
+  font-family: Roboto,sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
 }
 
 #root-node input,
@@ -44,6 +51,7 @@ input.apple-switch:checked:after {
 }
 
 input.icheck {
+	box-sizing: border-box;
   position: relative;
   appearance: none; 
   -webkit-appearance: none;
@@ -51,17 +59,20 @@ input.icheck {
   height: 20px;
   width: 20px;
   border: solid 2px lightgray; 
+  border-radius: 2px;
+	margin: 0 0.5rem;
 }
 
 input.icheck:after {
-  content: ' ';
-  position: absolute;
+	content: ' ';
+	box-sizing: border-box;
+	position: absolute;
   display: block;
   top: -2px;
-  left: 4px;
-  width: 5px;
-  height: 11px;
-  border: solid white;
+  left: 3px;
+  width: 10px;
+  height: 15px;
+  border: solid var(--transparent);
   border-radius: 2px;
   border-width: 0 4px 4px 0;
   transform: rotate(45deg);
@@ -76,7 +87,11 @@ input.icheck:checked {
   border-color: green;
 }
 
-select#iselect {
+input.icheck:checked:after {
+	border-color: var(--base-text-color);
+}
+
+select.iselect {
   font-family: Roboto, sans-serif;
   margin: 0 !important;
   border-top: 0 !important;
@@ -116,7 +131,7 @@ div.iselect-wrapper:after {
   border-top: 5px solid grey;
 }
 
-#iselect+label{
+.iselect+label{
   font-family: Roboto, sans-serif;
   color: rgba(0, 0, 0, 0.87); 
   position: absolute;
@@ -124,15 +139,15 @@ div.iselect-wrapper:after {
   transition: all 0.3s;
 }
 
-#iselect:focus + label,
-#iselect:valid + label {
+.iselect:focus + label,
+.iselect:valid + label {
   bottom: 1.5rem;
   font-size: 10px;
 }
-select#iselect:focus{
+select.iselect:focus{
   border-color: darkorchid;
 }
-#iselect:focus + label {
+.iselect:focus + label {
   color: darkorchid;
 }
 
@@ -274,3 +289,65 @@ button {
   box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
 }
 
+.button-colored:hover:before {
+  opacity: .08;
+}
+
+.fab-button {
+  background-color: var(--second-color);
+  border: none;
+  border-radius: 50%;
+  color: var(--base-text-color);
+  font-size: 24px;
+  fill: currentColor;
+  justify-content: center;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 56px;
+  min-width: 56px;
+
+  height: 56px;
+  padding: 0;
+  box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+  transition: box-shadow .28s cubic-bezier(.4,0,.2,1),opacity 15ms linear 30ms,transform .27s cubic-bezier(0,0,.2,1) 0ms,-webkit-transform .27s cubic-bezier(0,0,.2,1) 0ms;
+}
+
+.fab-button:hover {
+  box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
+}
+
+input.material-input {
+  font-family: Roboto, sans-serif;
+  margin: 0 !important;
+  border-top: 0 !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  border-bottom: solid 2px rgba(0, 0, 0, 0.42);
+  position: relative;
+  display: inline-block !important;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  padding: 5px 0;
+  margin: 8px 16px;
+  background: transparent;
+  text-align: left;
+  transition: border-bottom-color 0.3s ease-in-out;
+  width: 100%;
+  overflow-y: auto;
+}
+
+input.material-input::placeholder {
+  position: absolute;
+  top: -1rem;
+}
+
+input.material-input:focus {
+  border-bottom-color: var(--base-color);
+}
+
+input.material-input:focus::placeholder {
+  color: var(--base-color);
+  position: relative;
+  top: -1rem;
+}

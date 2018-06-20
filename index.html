@@ -6,7 +6,7 @@
   <title>Page Title</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="./material-like.css" />
   <script src="main.js"></script>
 </head>
 <body>
@@ -14,7 +14,7 @@
       <input class="apple-switch" type="checkbox">
       <input class="icheck" type="checkbox">
       <div class='iselect-wrapper'>
-        <select id="iselect" required>
+        <select class="iselect" required placeholder="Select...">
           <option value=""></option>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
@@ -31,10 +31,16 @@
         <label for="cheker">Cheker 2</label>
       </div>
       
-      <div style = "display: inline-flex;">
+      <div style = "display: flex;">
         <button class="material-button">Text</button>
         <button class="material-button button-outlined">Outlined</button>
         <button class="material-button button-colored">Colored</button>
+      </div>
+      <div style = "display: flex;">
+        <button class="material-button fab-button">X</button>
+      </div>
+      <div style = "display: flex;">
+        <input class="material-input" placeholder="Text input" style="width: 250px;">
       </div>
   </div>
 </body>
