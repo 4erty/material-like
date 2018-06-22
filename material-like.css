@@ -91,31 +91,11 @@ input.icheck:checked:after {
 	border-color: var(--base-text-color);
 }
 
-select.iselect {
-  font-family: Roboto, sans-serif;
-  margin: 0 !important;
-  border-top: 0 !important;
-  border-left: 0 !important;
-  border-right: 0 !important;
-  border-bottom: solid 2px rgba(0, 0, 0, 0.42);
-  position: relative;
-  display: inline-block !important;
-  appearance: none;
-  -webkit-appearance: none;
-  outline: none;
-  padding: 5px 0;
-  z-index: 2;
-  background: transparent;
-  text-align: left;
-  transition: border 0.3s;
-  width: 100%;
-}
-
 div.iselect-wrapper {
   margin-left: 2rem;
   display: inline-block;
   position: relative;
-  width: 250px;
+  width: 15rem;
 }
 
 div.iselect-wrapper:after {
@@ -131,24 +111,53 @@ div.iselect-wrapper:after {
   border-top: 5px solid grey;
 }
 
-.iselect+label{
+select.iselect {
+  font-family: Roboto, sans-serif;
+  margin: 0 !important;
+  border-top: 0 !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.42);
+  border-radius: 0;
+  background-image: linear-gradient(to bottom, var(--base-color),var(--base-color));
+	background-size: 0 2px;
+	background-position: 50% 100%;
+  transition: background-size 0.3s cubic-bezier(0.64, 0.09, 0.08, 1), border-color 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+  background-repeat: no-repeat;
+  position: relative;
+  display: inline-flex !important;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  padding: 5px 0;
+  text-align: left;
+  width: 100%;
+}
+
+.iselect + label{
+  user-select: none;
   font-family: Roboto, sans-serif;
   color: rgba(0, 0, 0, 0.87); 
   position: absolute;
   bottom: 0.2rem;
   transition: all 0.3s;
+  pointer-events: none;
+}
+
+select.iselect:hover {
+  border-bottom-color: rgba(0, 0, 0, 0.89);
 }
 
 .iselect:focus + label,
 .iselect:valid + label {
-  bottom: 1.5rem;
-  font-size: 10px;
+  transform: translateY(-100%) scale(.9);
+  color: var(--base-color);
 }
+
 select.iselect:focus{
-  border-color: darkorchid;
-}
-.iselect:focus + label {
-  color: darkorchid;
+  border-bottom-color: transparent;
+  background-size: 100% 2px;
+	outline: none;
 }
 
 input.radio {
@@ -315,14 +324,16 @@ button {
 .fab-button:hover {
   box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
 }
-
-input.material-input {
+/* Need wrapper */
+input.material-input,
+textarea.material-input {
   font-family: Roboto, sans-serif;
   margin: 0 !important;
   border-top: 0 !important;
   border-left: 0 !important;
   border-right: 0 !important;
-  border-bottom: solid 2px rgba(0, 0, 0, 0.42);
+  border-bottom: solid 1px rgba(0, 0, 0, 0.42);
+  border-radius: 0;
   position: relative;
   display: inline-block !important;
   appearance: none;
@@ -332,22 +343,76 @@ input.material-input {
   margin: 8px 16px;
   background: transparent;
   text-align: left;
-  transition: border-bottom-color 0.3s ease-in-out;
   width: 100%;
   overflow-y: auto;
+	background-image: linear-gradient(to bottom, var(--base-color),var(--base-color));
+	background-size: 0 2px;
+	background-position: 50% 100%;
+  transition: background-size 0.3s cubic-bezier(0.64, 0.09, 0.08, 1), border-color 0.3s linear;
+  background-repeat: no-repeat;
 }
 
-input.material-input::placeholder {
+textarea.material-input {
+  border-top: solid 1px rgba(0, 0, 0, 0.42) !important;
+  border-left: solid 1px rgba(0, 0, 0, 0.42) !important;
+  border-right: solid 1px rgba(0, 0, 0, 0.42) !important;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.42) !important;
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+input.material-input::placeholder,
+textarea.material-input::placeholder {
+  color: transparent;
+}
+
+input.material-input + label,
+textarea.material-input + label {
+  color: rgba(0,0,0,.42);
   position: absolute;
-  top: -1rem;
+  padding: 0;
+  margin: 0;
+  margin-top: 1rem;
+  display: block;
+  transition: all 0.3s ease-in-out;
+  pointer-events: none;
 }
 
-input.material-input:focus {
-  border-bottom-color: var(--base-color);
+textarea.material-input + label {
+  margin-top: 0;
+  padding: 1rem;
 }
 
-input.material-input:focus::placeholder {
+input.material-input:hover,
+textarea.material-input:hover {
+  border-bottom-color: rgba(0,0,0,.89);
+}
+
+input.material-input:focus,
+textarea.material-input:focus {
+  border-bottom-color: transparent;
+  background-size: 100% 2px;
+	outline: none;
+}
+
+input.material-input:focus + label,
+input.material-input:valid + label {
   color: var(--base-color);
-  position: relative;
-  top: -1rem;
+  font-size: 0.75rem;
+  transform: translate(0,-110%);
 }
+
+textarea.material-input:focus + label,
+textarea.material-input:valid + label {
+  color: var(--base-color);
+  font-size: 0.75rem;
+  transform: translate(0,-.75rem);
+}
+
+textarea.material-input:focus {
+  border-top: solid 1px var(--base-color) !important;
+  border-left: solid 1px var(--base-color) !important;
+  border-right: solid 1px var(--base-color) !important;
+  border-bottom: solid 1px var(--base-color) !important;
+}
+
