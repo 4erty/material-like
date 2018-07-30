@@ -1,11 +1,11 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', ()=>{
   let button = document.querySelector('.button-colored');
-  button.addEventListener("click", ()=>{makeModal('Заголовок', 'Вопрос?', (event)=>{console.log(event);});})
+  button.addEventListener('click', ()=>{ makeModal('Заголовок', 'Вопрос?', (event)=>{ console.log(event); }); });
 });
 
 function makeModal(header = '', section = '', callback){
   let back = document.createElement('aside');
-  back.className = "material-dialog";
+  back.className = 'material-dialog';
   back.setAttribute('role', 'alertdialog');
   back.setAttribute('aria-labelledby', 'material-dialog-label');
   back.setAttribute('aria-describedby', 'material-dialog-description');
@@ -16,7 +16,7 @@ function makeModal(header = '', section = '', callback){
   dialogHeader.className = 'material-dialog__header';
   let dialogHeaderH2 = document.createElement('h2');
   dialogHeaderH2.setAttribute('id', 'material-dialog-label');
-  dialogHeaderH2.className = "material-dialog__header__title";
+  dialogHeaderH2.className = 'material-dialog__header__title';
   dialogHeaderH2.textContent = header;
   dialog.appendChild(dialogHeader).appendChild(dialogHeaderH2);
   let dialogBody = document.createElement('section');
@@ -30,7 +30,7 @@ function makeModal(header = '', section = '', callback){
   buttonCancel.className = 'material-button material-dialog__footer__button material-dialog__footer__button--cancel';
   buttonCancel.setAttribute('type', 'button');
   buttonCancel.textContent = 'Cancel';
-  dialogFooter.appendChild(buttonCancel); 
+  dialogFooter.appendChild(buttonCancel);
   let buttonAccept = document.createElement('button');
   buttonAccept.className = 'material-button material-dialog__footer__button material-dialog__footer__button--accept';
   buttonAccept.setAttribute('type', 'button');
@@ -46,6 +46,6 @@ function makeModal(header = '', section = '', callback){
   back.addEventListener('click', event=>{
     event.target.classList.contains('material-dialog__backdrop') && back.remove();
   });
-  buttonCancel.addEventListener('click', ()=>{back.remove();});
+  buttonCancel.addEventListener('click', ()=>{ back.remove(); });
   buttonAccept.addEventListener('click', callback);
 }
